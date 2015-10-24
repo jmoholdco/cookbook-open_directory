@@ -24,4 +24,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-include_recipe 'krb5'
+include_recipe 'open_directory::passwords'
+include_recipe 'krb5::kadmin_init'
+include_recipe 'krb5::kdc'
+include_recipe 'open_directory::services'
+include_recipe 'krb5::rkerberos_gem'
+
+krb5_principal 'host/orion.jmorgan.org'
+
+krb5_keytab '/etc/krb5.keytab' do
+  principals %w(host/orion.jmorgan.org)
+end
