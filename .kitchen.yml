@@ -1,13 +1,17 @@
 ---
 driver:
   name: vagrant
+  vm_hostname: orion.jmorgan.org
+  network:
+    - ['private_network', { type: 'dhcp' }]
 
 provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-14.04
   - name: centos-7.1
+  - name: debian-8.1
+    run_list: recipe[apt]
 
 suites:
   - name: default
