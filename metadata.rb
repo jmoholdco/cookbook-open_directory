@@ -1,0 +1,7 @@
+name 'open_directory'
+maintainer 'J. Morgan Lieberthal'
+maintainer_email 'j.morgan.lieberthal@gmail.com'
+license 'mit'
+description 'Installs/Configures open_directory'
+long_description 'Installs/Configures open_directory'
+version '0.1.0'
