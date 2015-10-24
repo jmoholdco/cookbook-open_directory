@@ -55,6 +55,10 @@ RSpec.describe 'open_directory::default' do
           expect(chef_run).to include_recipe 'open_directory::services'
         end
 
+        it 'creates the root principal' do
+          expect(chef_run).to create_krb5_principal('root/admin')
+        end
+
         it 'creates the host principal' do
           expect(chef_run).to create_krb5_principal('host/orion.jmorgan.org')
         end
