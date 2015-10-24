@@ -5,3 +5,6 @@ license 'mit'
 description 'Installs/Configures open_directory'
 long_description 'Installs/Configures open_directory'
 version '0.1.0'
+
+depends 'krb5', '~> 2.0'
+depends 'openldap', '~> 2.2'
