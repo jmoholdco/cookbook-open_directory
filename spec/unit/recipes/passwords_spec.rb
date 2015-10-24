@@ -36,10 +36,6 @@ RSpec.describe 'open_directory::passwords' do
       context "on #{platform} v#{version}" do
         let(:opts) { { platform: platform, version: version } }
         include_examples 'converges successfully'
-        before :each do
-          expect(chef_run.node['krb5']['master_password']).to eq 'password'
-          expect(chef_run.node['krb5']['admin_password']).to eq 'password'
-        end
 
         it 'sets the master password from the vault' do
           expect(chef_run.node['krb5']['master_password']).to eq 'masterpass'
