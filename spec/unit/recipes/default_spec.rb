@@ -24,19 +24,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-
 require 'spec_helper'
 
 RSpec.describe 'open_directory::default' do
   let(:chef_run) { ChefSpec::SoloRunner.new(opts).converge(described_recipe) }
-  context 'When all attributes are default, on an unspecified platform' do
-    let(:opts) { {} }
-    include_examples 'converges successfully'
-  end
   supported_platforms = {
-    'ubuntu' => %w(14.04 15.10),
     'centos' => %w(7.0 7.1.1503),
-    'debian' => %w(7.8 8.0 8.1)
+    'debian' => %w(8.0 8.1)
   }
 
   supported_platforms.each do |platform, versions|
