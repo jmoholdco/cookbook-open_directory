@@ -25,8 +25,6 @@
 # THE SOFTWARE.
 #
 
-include_recipe 'openldap::server'
-
 cookbook_file '/etc/ldap/schema/samba.schema' do
   source 'samba.schema'
   mode '0644'
@@ -40,3 +38,5 @@ cookbook_file '/etc/ldap/schema/apple.schema' do
   owner 'root'
   group node['root_group']
 end
+
+include_recipe 'openldap::server'
