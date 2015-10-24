@@ -30,7 +30,10 @@ include_recipe 'krb5::kdc'
 include_recipe 'open_directory::services'
 include_recipe 'krb5::rkerberos_gem'
 
-krb5_principal 'root/admin'
+krb5_principal 'root/admin' do
+  password lazy { node.run_state['kadmin_password'] }
+end
+
 krb5_principal 'host/orion.jmorgan.org'
 
 krb5_keytab '/etc/krb5.keytab' do

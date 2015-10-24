@@ -31,3 +31,9 @@ password_vault = chef_vault_item('passwords', 'krb5')
 
 node.override['krb5']['master_password'] = password_vault['master']
 node.override['krb5']['admin_password'] = password_vault['admin']
+
+ruby_block 'add_kadmin_password_to_run_state' do
+  block do
+    node.run_state['kadmin_password'] = password_vault['admin']
+  end
+end
