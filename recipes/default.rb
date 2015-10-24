@@ -39,3 +39,5 @@ krb5_principal 'host/orion.jmorgan.org'
 krb5_keytab '/etc/krb5.keytab' do
   principals %w(host/orion.jmorgan.org)
 end
+
+include_recipe 'open_directory::ldap_schema'
