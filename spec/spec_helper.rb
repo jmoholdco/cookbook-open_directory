@@ -1,6 +1,7 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef-vault/test_fixtures'
+ChefSpec::Coverage.start!
 
 Dir['./spec/support/**/*.rb'].each { |f| require f }
 
