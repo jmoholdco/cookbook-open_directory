@@ -26,12 +26,15 @@
 
 require 'spec_helper'
 
-RSpec.describe 'open_directory::default' do
+RSpec.describe 'open_directory::services' do
   let(:chef_run) { ChefSpec::SoloRunner.new(opts).converge(described_recipe) }
-
+  context 'When all attributes are default, on an unspecified platform' do
+    let(:opts) { {} }
+    include_examples 'converges successfully'
+  end
   supported_platforms = {
     'centos' => %w(7.0 7.1.1503),
-    'debian' => %w(8.0 8.1)
+    'debian' => %w(7.8 8.0 8.1)
   }
 
   supported_platforms.each do |platform, versions|
@@ -39,30 +42,24 @@ RSpec.describe 'open_directory::default' do
       context "on #{platform} v#{version}" do
         let(:opts) { { platform: platform, version: version } }
         include_examples 'converges successfully'
-        it 'includes the password recipe' do
-          expect(chef_run).to include_recipe 'open_directory::passwords'
+        describe 'the krb5kdc service' do
+          it 'is enabled' do
+            expect(chef_run).to enable_service('krb5-kdc')
+          end
+
+          it 'is running' do
+            expect(chef_run).to start_service('krb5-kdc')
+          end
         end
 
-        it 'includes the krb5 recipe' do
-          expect(chef_run).to include_recipe 'krb5'
-        end
+        describe 'the kadmin service' do
+          it 'is enabled' do
+            expect(chef_run).to enable_service('krb5-admin-server')
+          end
 
-        it 'includes the krb5::kadmin_init recipe' do
-          expect(chef_run).to include_recipe 'krb5::kadmin_init'
-        end
-
-        it 'includes the custom service recipe' do
-          expect(chef_run).to include_recipe 'open_directory::services'
-        end
-
-        it 'creates the host principal' do
-          expect(chef_run).to create_krb5_principal('host/orion.jmorgan.org')
-        end
-
-        it 'creates a keytab for the host principal' do
-          expect(chef_run).to create_krb5_keytab('/etc/krb5.keytab').with(
-            principals: %w(host/orion.jmorgan.org)
-          )
+          it 'is running' do
+            expect(chef_run).to enable_service('krb5-admin-server')
+          end
         end
       end
     end
