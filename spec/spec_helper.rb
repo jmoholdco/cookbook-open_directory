@@ -9,7 +9,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.disable_monkey_patching!
 
-  config.include ChefVault::TestFixtures.rspec_shared_context, vault: true
+  config.include ChefVault::TestFixtures.rspec_shared_context(true)
 
   if config.files_to_run.one?
     config.default_formatter = 'doc'
