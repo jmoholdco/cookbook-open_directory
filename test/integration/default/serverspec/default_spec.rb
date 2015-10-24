@@ -9,9 +9,7 @@ RSpec.describe 'open_directory::default' do
         expect(subject.content).to match(
           /\[libdefaults\]\s+^\s+default_realm = JMORGAN\.ORG/
         )
-        expect(subject.content).to match(
-          /\[realms\]\s+JMORGAN\.ORG = \{\n\s+kdc = orion\.jmorgan\.org\n\s\}/
-        )
+        expect(subject.content).to match(/\[realms\]\s+JMORGAN\.ORG = /)
       end
     end
   end
