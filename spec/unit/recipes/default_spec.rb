@@ -38,6 +38,13 @@ RSpec.describe 'open_directory::default' do
       context "on #{platform} v#{version}" do
         let(:opts) { { platform: platform, version: version } }
         include_examples 'converges successfully'
+        it 'includes the password recipe' do
+          expect(chef_run).to include_recipe 'open_directory::passwords'
+        end
+
+        it 'includes the krb5 recipe' do
+          expect(chef_run).to include_recipe 'krb5'
+        end
       end
     end
   end
