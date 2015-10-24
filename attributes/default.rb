@@ -4,3 +4,12 @@ override['krb5']['krb5_conf']['realms'] = {
   'default_realm_admin_server' => 'orion.jmorgan.org',
   'realms' => [default['krb5']['krb5_conf']['realms']['default_realm']]
 }
+
+# override['openldap']['basedn'] = 'dc=jmorgan,dc=org'
+override['openldap']['server'] = node['fqdn']
+override['openldap']['schemas'] = %w( core.schema
+                                      cosine.schema
+                                      nis.schema
+                                      inetorgperson.schema
+                                      samba.schema
+                                      apple.schema )
