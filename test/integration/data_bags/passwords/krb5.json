@@ -1,4 +1,4 @@
 {
-  "master": "masterpassword",
-  "admin": "adminpassword"
+  "master": "masterpass",
+  "admin": "adminpass"
 }
