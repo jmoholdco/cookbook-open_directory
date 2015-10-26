@@ -4,7 +4,7 @@ maintainer_email 'j.morgan.lieberthal@gmail.com'
 license 'mit'
 description 'Installs/Configures open_directory'
 long_description 'Installs/Configures open_directory'
-version '0.1.1'
+version '0.1.2'
 
 depends 'sslcerts', '~> 0.4'
 depends 'chef-vault', '~> 1.3'

@@ -68,6 +68,16 @@ RSpec.describe 'open_directory::default' do
             principals: %w(host/orion.jmorgan.org)
           )
         end
+
+        it 'creates the ldap principal' do
+          expect(chef_run).to create_krb5_principal('ldap/orion.jmorgan.org')
+        end
+
+        it 'creates a keytab for the ldap principal' do
+          expect(chef_run).to create_krb5_keytab(
+            '/etc/openldap/krb5.keytab.ldap'
+          ).with(principals: %w(ldap/orion.jmorgan.org))
+        end
       end
     end
   end

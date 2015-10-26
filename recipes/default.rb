@@ -42,4 +42,13 @@ krb5_keytab '/etc/krb5.keytab' do
   principals %w(host/orion.jmorgan.org)
 end
 
+krb5_principal 'ldap/orion.jmorgan.org'
+
+krb5_keytab '/etc/openldap/krb5.keytab.ldap' do
+  principals %w(ldap/orion.jmorgan.org)
+  owner node['openldap']['system_acct']
+  group node['openldap']['system_group']
+  notifies :restart, 'service[krb5-kdc]'
+end
+
 include_recipe 'open_directory::ldap_schema'

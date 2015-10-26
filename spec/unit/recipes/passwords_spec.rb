@@ -44,6 +44,10 @@ RSpec.describe 'open_directory::passwords' do
         it 'sets the admin password from the vault' do
           expect(chef_run.node['krb5']['admin_password']).to eq 'adminpass'
         end
+
+        it 'runs the ruby block to save the password in the node run_state' do
+          expect(chef_run).to run_ruby_block('add_kadmin_password_to_run_state')
+        end
       end
     end
   end

@@ -40,9 +40,7 @@ RSpec.describe 'open_directory::ssl' do
         let(:ssl_dir) { platform == 'centos' ? '/etc/pki/tls' : '/etc/ssl' }
         include_examples 'converges successfully'
         it 'creates the ssl certificate' do
-          expect(chef_run).to create_ssl_certificate('ldap').with(
-            private_key_filename: "#{ssl_dir}/private/ldap-fauxhai.local.pem"
-          )
+          expect(chef_run).to create_ssl_certificate('ldap')
         end
       end
     end
