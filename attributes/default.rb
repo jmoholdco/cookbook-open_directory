@@ -13,3 +13,9 @@ override['openldap']['schemas'] = %w( core.schema
                                       inetorgperson.schema
                                       samba.schema
                                       apple.schema )
+
+override['openldap']['packages']['bdb'] = 'db4-utils' if platform? 'centos'
+override['sslcerts']['ssl_dir'] = value_for_platform_family(
+  'rhel' => '/etc/pki/tls',
+  'default' => '/etc/ssl'
+)

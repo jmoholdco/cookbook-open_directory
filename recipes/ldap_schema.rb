@@ -25,18 +25,22 @@
 # THE SOFTWARE.
 #
 
-cookbook_file '/etc/ldap/schema/samba.schema' do
+directory "#{node['openldap']['dir']}/schema" do
+  recursive true
+end
+
+cookbook_file "#{node['openldap']['dir']}/schema/samba.schema" do
   source 'samba.schema'
   mode '0644'
   owner 'root'
   group node['root_group']
 end
 
-cookbook_file '/etc/ldap/schema/apple.schema' do
+cookbook_file "#{node['openldap']['dir']}/schema/apple.schema" do
   source 'apple.schema'
   mode '0644'
   owner 'root'
   group node['root_group']
 end
 
-include_recipe 'openldap::server'
+# include_recipe 'openldap::server'

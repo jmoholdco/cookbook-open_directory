@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: open_directory
-# Recipe:: default
+# Recipe:: ssl
 #
 # The MIT License (MIT)
 #
@@ -24,22 +24,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-include_recipe 'setup::default'
-include_recipe 'open_directory::passwords'
-include_recipe 'open_directory::ssl'
-include_recipe 'krb5::kadmin_init'
-include_recipe 'krb5::kdc'
-include_recipe 'open_directory::services'
-include_recipe 'krb5::rkerberos_gem'
+include_recipe 'sslcerts'
 
-krb5_principal 'root/admin' do
-  password lazy { node.run_state['kadmin_password'] }
+ssl_certificate 'ldap' do
+  action :create
+  ssl_dir node['sslcerts']['dir']
+  organization node['sslcerts']['request']['subject']['org']
+  country node['sslcerts']['request']['subject']['country']
+  state node['sslcerts']['request']['subject']['state']
+  common_name node['fqdn']
 end
-
-krb5_principal 'host/orion.jmorgan.org'
-
-krb5_keytab '/etc/krb5.keytab' do
-  principals %w(host/orion.jmorgan.org)
-end
-
-include_recipe 'open_directory::ldap_schema'
