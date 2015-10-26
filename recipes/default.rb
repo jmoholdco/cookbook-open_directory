@@ -52,3 +52,5 @@ krb5_keytab '/etc/openldap/krb5.keytab.ldap' do
 end
 
 include_recipe 'open_directory::ldap_schema'
+
+krb5_principal 'diradmin/admin'
