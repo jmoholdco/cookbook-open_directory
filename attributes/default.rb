@@ -25,3 +25,5 @@ override['openldap']['ssl_cert'] =
   '/etc/pki/tls/certs/ldap-orion.jmorgan.org.pem'
 override['openldap']['ssl_key'] =
   '/etc/pki/tls/private/ldap-orion.jmorgan.org.pem'
+
+override['openldap']['rootpw'] = '{SSHA}Wf1rZUJZcu7Sl7MGQlVkmLxH7Mh/HyUF'
