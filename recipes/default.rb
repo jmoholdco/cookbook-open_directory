@@ -53,6 +53,8 @@ end
 
 include_recipe 'open_directory::ldap_schema'
 
-krb5_principal 'diradmin/admin'
+krb5_principal 'diradmin/admin' do
+  password lazy { node.run_state['kadmin_password'] }
+end
 
 cookbook_file '/root/od-structure.ldif'
