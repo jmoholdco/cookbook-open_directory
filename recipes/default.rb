@@ -54,3 +54,5 @@ end
 include_recipe 'open_directory::ldap_schema'
 
 krb5_principal 'diradmin/admin'
+
+cookbook_file '/root/od-structure.ldif'

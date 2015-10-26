@@ -1,0 +1,113 @@
+dn: cn=users,dc=jmorgan,dc=org
+cn: users
+objectClass: container
+
+dn: cn=groups,dc=jmorgan,dc=org
+cn: groups
+objectClass: container
+
+dn: cn=mounts,dc=jmorgan,dc=org
+cn: mounts
+objectClass: container
+
+dn: cn=accesscontrols,dc=jmorgan,dc=org
+cn: accesscontrols
+objectClass: container
+
+dn: cn=certificateauthorities,dc=jmorgan,dc=org
+cn: certificateauthorities
+objectClass: container
+
+dn: cn=computers,dc=jmorgan,dc=org
+cn: computers
+objectClass: container
+
+dn: cn=computer_groups,dc=jmorgan,dc=org
+cn: computer_groups
+objectClass: container
+
+dn: cn=computer_lists,dc=jmorgan,dc=org
+cn: computer_lists
+objectClass: container
+
+dn: cn=config,dc=jmorgan,dc=org
+cn: config
+objectClass: container
+
+dn: cn=locations,dc=jmorgan,dc=org
+cn: locations
+objectClass: container
+
+dn: cn=machines,dc=jmorgan,dc=org
+cn: machines
+objectClass: container
+
+dn: cn=neighborhoods,dc=jmorgan,dc=org
+cn: neighborhoods
+objectClass: container
+
+dn: cn=people,dc=jmorgan,dc=org
+cn: people
+objectClass: container
+
+dn: cn=presets_computer_lists,dc=jmorgan,dc=org
+cn: presets_computer_lists
+objectClass: container
+
+dn: cn=presets_groups,dc=jmorgan,dc=org
+cn: presets_groups
+objectClass: container
+
+dn: cn=presets_users,dc=jmorgan,dc=org
+cn: presets_users
+objectClass: container
+
+dn: cn=printers,dc=jmorgan,dc=org
+cn: printers
+objectClass: container
+
+dn: cn=augments,dc=jmorgan,dc=org
+cn: augments
+objectClass: container
+
+dn: cn=autoserversetup,dc=jmorgan,dc=org
+cn: autoserversetup
+objectClass: container
+
+dn: cn=filemakerservers,dc=jmorgan,dc=org
+cn: filemakerservers
+objectClass: container
+
+dn: cn=resources,dc=jmorgan,dc=org
+cn: resources
+objectClass: container
+
+dn: cn=places,dc=jmorgan,dc=org
+cn: places
+objectClass: container
+
+dn: cn=maps,dc=jmorgan,dc=org
+cn: maps
+objectClass: container
+
+dn: cn=presets_computers,dc=jmorgan,dc=org
+cn: presets_computers
+objectClass: container
+
+dn: cn=presets_computer_groups,dc=jmorgan,dc=org
+cn: presets_computer_groups
+objectClass: container
+
+dn: cn=automountMap,dc=jmorgan,dc=org
+cn: automountMap
+objectClass: container
+
+dn: ou=macosxodconfig,cn=config,dc=jmorgan,dc=org
+ou: macosxodconfig
+objectClass: top
+objectClass: organizationalUnit
+
+dn: cn=CollabServices,cn=config,dc=jmorgan,dc=org
+cn: CollabServices
+objectClass: apple-configuration
+objectClass: top

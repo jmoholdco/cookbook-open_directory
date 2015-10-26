@@ -82,6 +82,11 @@ RSpec.describe 'open_directory::default' do
         it 'creates the diradmin principal' do
           expect(chef_run).to create_krb5_principal('diradmin/admin')
         end
+
+        it 'creates the cookbook file for the od structure' do
+          expect(chef_run).to create_cookbook_file('/root/od-structure.ldif')
+            .with(source: 'od-structure.ldif')
+        end
       end
     end
   end
