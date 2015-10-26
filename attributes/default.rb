@@ -19,3 +19,9 @@ override['sslcerts']['ssl_dir'] = value_for_platform_family(
   'rhel' => '/etc/pki/tls',
   'default' => '/etc/ssl'
 )
+
+override['openldap']['manage_ssl'] = false
+override['openldap']['ssl_cert'] =
+  '/etc/pki/tls/certs/ldap-orion.jmorgan.org.pem'
+override['openldap']['ssl_key'] =
+  '/etc/pki/tls/private/ldap-orion.jmorgan.org.pem'

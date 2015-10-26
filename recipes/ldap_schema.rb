@@ -43,4 +43,4 @@ cookbook_file "#{node['openldap']['dir']}/schema/apple.schema" do
   group node['root_group']
 end
 
-# include_recipe 'openldap::server'
+include_recipe 'openldap::server'

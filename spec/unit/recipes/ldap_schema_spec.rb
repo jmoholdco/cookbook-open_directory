@@ -81,8 +81,8 @@ RSpec.describe 'open_directory::ldap_schema' do
             expect(node['server']).to eq 'orion.jmorgan.org'
           end
 
-          it 'manages ssl certificates' do
-            expect(node['manage_ssl']).to be_truthy
+          it 'does not manage ssl certificates' do
+            expect(node['manage_ssl']).to be_falsy
           end
         end
       end
