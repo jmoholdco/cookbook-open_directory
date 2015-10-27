@@ -34,3 +34,15 @@ ssl_certificate 'ldap' do
   state node['sslcerts']['request']['subject']['state']
   common_name node['fqdn']
 end
+
+file '/etc/pki/tls/certs/ldap-orion.jmorgan.org.pem' do
+  owner 'ldap'
+  group 'ldap'
+  mode '0644'
+end
+
+file '/etc/pki/tls/private/ldap-orion.jmorgan.org.pem' do
+  owner 'ldap'
+  group 'ldap'
+  mode '0400'
+end

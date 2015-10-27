@@ -29,7 +29,6 @@ include_recipe 'open_directory::passwords'
 include_recipe 'open_directory::ssl'
 include_recipe 'krb5::kadmin_init'
 include_recipe 'krb5::kdc'
-include_recipe 'open_directory::services'
 include_recipe 'krb5::rkerberos_gem'
 
 krb5_principal 'root/admin' do
@@ -51,6 +50,7 @@ krb5_keytab '/etc/openldap/krb5.keytab.ldap' do
   notifies :restart, 'service[krb5-kdc]'
 end
 
+include_recipe 'open_directory::services'
 include_recipe 'open_directory::ldap_schema'
 
 krb5_principal 'diradmin/admin' do
