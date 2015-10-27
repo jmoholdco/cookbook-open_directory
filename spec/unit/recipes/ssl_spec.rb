@@ -37,10 +37,17 @@ RSpec.describe 'open_directory::ssl' do
     versions.each do |version|
       context "on #{platform} v#{version}" do
         let(:opts) { { platform: platform, version: version } }
-        let(:ssl_dir) { platform == 'centos' ? '/etc/pki/tls' : '/etc/ssl' }
+        let(:ssl_dir) do
+          platform == 'centos' ? '/etc/openldap/ssl' : '/etc/ldap/ssl'
+        end
         include_examples 'converges successfully'
         it 'creates the ssl certificate' do
-          expect(chef_run).to create_ssl_certificate('ldap')
+          expect(chef_run).to create_ssl_certificate('ldap').with(
+            owner: 'root',
+            group: 'root',
+            common_name: 'ldap-fauxhai.local',
+            ssl_dir: ssl_dir
+          )
         end
       end
     end

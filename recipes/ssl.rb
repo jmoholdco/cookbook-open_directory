@@ -28,21 +28,9 @@ include_recipe 'sslcerts'
 
 ssl_certificate 'ldap' do
   action :create
-  ssl_dir node['sslcerts']['dir']
-  organization node['sslcerts']['request']['subject']['org']
-  country node['sslcerts']['request']['subject']['country']
-  state node['sslcerts']['request']['subject']['state']
-  common_name node['fqdn']
-end
-
-file '/etc/pki/tls/certs/ldap-orion.jmorgan.org.pem' do
-  owner 'ldap'
-  group 'ldap'
-  mode '0644'
-end
-
-file '/etc/pki/tls/private/ldap-orion.jmorgan.org.pem' do
-  owner 'ldap'
-  group 'ldap'
-  mode '0400'
+  ssl_dir node['openldap']['ssl_dir']
+  organization 'JML Holdings, LLC'
+  country 'US'
+  state 'Colorado'
+  common_name "ldap-#{node['fqdn']}"
 end
